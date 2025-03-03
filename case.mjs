@@ -1,4 +1,5 @@
 // How to query data on SOLANA?
+// How to decode data ?
 
 import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
 
@@ -23,14 +24,15 @@ export function findProgramStatePDA(programId) {
 try {
   const structDecoder =
     getStructDecoder([
-      ["anchorDiscriminator", fixDecoderSize(getBytesDecoder(), 8)],
+      ["anchorDiscriminator", fixDecoderSize(getBytesDecoder(), 8)], // for anchor rust, fixed
+      // The following are all based on the contract fields.
       ["admin", getAddressDecoder()],
       ["wizMint", getAddressDecoder()],
       ["feeRecipient", getAddressDecoder()],
       ["poolMap", getArrayDecoder(getAddressDecoder())],
     ]);
   new Connection(clusterApiUrl('devnet'))
-    .getAccountInfo(findProgramStatePDA(new PublicKey('AJakoPQCZADTtCjNN8ETNXFbF2nmVhprAudDNrcL8RD2')))
+    .getAccountInfo(findProgramStatePDA(new PublicKey('AJakoPQCZADTtCjNN8ETNXFbF2nmVhprAudDNrcL8RD2'))) // contract address
     .then((res) => {
       console.info(structDecoder.decode(res.data))
     })
