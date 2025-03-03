@@ -1,0 +1,19 @@
+{
+  "name": "contract-interaction-without-anchor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["solana"],
+  "author": "sunmoon-a11y",
+  "email": "solanaLOLfun@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.30.1",
+    "@solana/addresses": "^2.1.0",
+    "@solana/codecs": "^2.1.0",
+    "@solana/web3.js": "^1.98.0"
+  }
+}
